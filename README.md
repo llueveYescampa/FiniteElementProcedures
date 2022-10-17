@@ -1,5 +1,5 @@
-# .                              s t a p                              
-# .                                                                   
-# .            an in-core solution static analysis program            
-# .                    Fortran 90 version
+# S T A P
+#                                                                    
+# An in-core solution static analysis program            
+# Fortran 90 version
 
