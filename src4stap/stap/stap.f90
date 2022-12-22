@@ -40,12 +40,6 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
   ! .   and correspondingly common a(mtot).                             .
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
         
-  ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-  ! .   double precision line                                           .
-  ! .     itwo = 1 single precision arithmetic                          .
-  ! .     itwo = 2 double precision arithmetic                          .
-  ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-  include 'itwo.h'
   !
   !     the following scratch files are used
   !        ielmnt = unit storing element data
