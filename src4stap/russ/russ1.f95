@@ -1,7 +1,7 @@
 subroutine russ1 (mht,id,x,y,z,e,area,lm,xyz,matp, npar)
-  implicit none
-  double precision ::  x(*),y(*),z(*),e(*),area(*),xyz(6,*)
-  integer :: id(3,*),lm(6,*),mht(*) ,matp(*), npar(*)
+include 'common.h'
+  real (kind=dbl) ::  x(*),y(*),z(*),e(*),area(*),xyz(6,*)
+  integer         :: id(3,*),lm(6,*),mht(*) ,matp(*), npar(*)
   ! . . .. . . . . . . . . . . . . . . . . . . . .
   ! .                                            .
   ! .    read and generate element information   .
@@ -13,7 +13,7 @@ subroutine russ1 (mht,id,x,y,z,e,area,lm,xyz,matp, npar)
 
   integer :: i,ii,j,jj,kg,l,m,mtyp,mtype,n,nd,kkk
 
-  include 'format4Russ1.h'  
+  include 'format4Russ1.h'
 
   nd=6
   kkk=0

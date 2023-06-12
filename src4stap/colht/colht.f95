@@ -1,6 +1,6 @@
 subroutine colht (mht,nd,lm)
-  use iso_fortran_env
-  implicit none
+use iso_fortran_env
+include 'common.h'
   integer :: mht(*), nd, lm(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -12,7 +12,7 @@ subroutine colht (mht,nd,lm)
   integer :: ls,i,ii,me
 
   ls=huge(ls)  ! Largest integer
-  
+
   do i=1,nd
     if (lm(i) /=  0) then
       if ( lm(i)-ls  <  0) then

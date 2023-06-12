@@ -1,16 +1,16 @@
-subroutine russ2 (e,area,lm,xyz,matp, maxa, kk, npar)
-  implicit none
-  double precision :: e(*),area(*),xyz(6,*), kk(*)
-  integer :: lm(6,*) ,matp(*), maxa(*), npar(*)
-  ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+subroutine russ2 (e,area,lm,xyz,matp, maxa, rkk, npar)
+include 'common.h'
+  real (kind=dbl) :: e(*),area(*),xyz(6,*), rkk(*)
+  integer         :: lm(6,*) ,matp(*), maxa(*), npar(*)
+  ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                           .
   ! .      a s s e m b l e  s t u c t u r e  s t i f f n e s s  m a t r i x     .
   ! .                           for truss element                               .
   ! .                                                                           .
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .........
-  double precision :: s(21),st(6),d(3)
-  double precision :: xl,xl2,xx,yy
-  integer :: k,kl,l,mtype,n,nd
+  real (kind=dbl) :: s(21),st(6),d(3)
+  real (kind=dbl) :: xl,xl2,xx,yy
+  integer         :: k,kl,l,mtype,n,nd
 
   nd=6
   do n=1,npar(2)
@@ -34,7 +34,7 @@ subroutine russ2 (e,area,lm,xyz,matp, maxa, kk, npar)
         s(kl)=st(k)*yy
       enddo
     enddo
-    call addban (kk,maxa,s,lm(1,n),nd)
+    call addban (rkk,maxa,s,lm(1,n),nd)
   enddo
   return
 end

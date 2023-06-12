@@ -2,11 +2,11 @@
 enable_language(Fortran)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 get_filename_component(CurrDir ${CMAKE_CURRENT_SOURCE_DIR} NAME)
-  
-#Create a variable called linalg_SOURCES containing all .cpp files:
 
-set(colsol_Src 
-    ${myPROJECT_SOURCE_DIR}/${CurrDir}/colsol.f90
+#Create a variable called linalg_SOURCES containing all .f95 files:
+
+set(colsol_Src
+    ${myPROJECT_SOURCE_DIR}/${CurrDir}/colsol.f95
     PARENT_SCOPE
     )
 

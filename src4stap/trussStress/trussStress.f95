@@ -1,7 +1,7 @@
-subroutine trussAssem(temp, maxa, k, npar)
-  implicit none
-  integer :: temp(*), maxa(*), npar(*)
-  double precision :: k(*)
+subroutine trussStress(temp, u, ng, npar)
+include 'common.h'
+  integer :: temp(*), ng, npar(*)
+  real (kind=dbl) :: u(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -18,7 +18,7 @@ subroutine trussAssem(temp, maxa, k, npar)
   n105=n104  + 6*npar(2)*itwo         ! xyz
   nlast=n105 + npar(2)                ! matp
 
-  call russ2 (temp(1),temp(n102),temp(n103),temp(n104),temp(n105), maxa, k, npar)
+  call russ3 (temp(1),temp(n102),temp(n103),temp(n104),temp(n105), u, ng, npar)
 
   return
 end

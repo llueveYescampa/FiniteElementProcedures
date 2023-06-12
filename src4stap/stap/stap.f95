@@ -1,10 +1,8 @@
 program stap
 Use, intrinsic :: iso_fortran_env, Only : iostat_end
-  implicit none
-  integer :: argc
+include 'common.h'
+  integer           :: argc
   character(len=32) :: argv
-  
-
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -13,24 +11,23 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
   ! .            an in-core solution static analysis program            .
   ! .                                                                   .
   ! . . . . . . . . . . . . . .  . . .  . . . . . . . . . . . . . . . . .
-      include 'tapes.h'
-!
-      real :: tim(5), hed(20)
+  include 'tapes.h'
+  !
       integer :: ioerr
       integer :: i,ktr,l,ll,mm,neq1,nlcase,nload,nnl, modex
-      real :: tt
       integer ::  numnp,neq,nwk,mk, numeg, npar(10)
-      
+      real (kind=sgl) :: tim(5), hed(20), tt
+
   !!!!!!!!!!!!!!!!!!!! Dynamically allocated variables !!!!!!!!!!!!!!!!!!!
-      integer, dimension(:,:), allocatable :: id
-      integer,          dimension(:), allocatable :: mht
-      double precision, dimension(:), allocatable :: x
-      double precision, dimension(:), allocatable :: y
-      double precision, dimension(:), allocatable :: z
-      double precision, dimension(:), allocatable ::r
-      double precision, dimension(:), allocatable ::k
-      double precision, dimension(:), allocatable ::u
-      integer,          dimension(:), allocatable :: maxa
+      integer,         dimension(:,:), allocatable :: id
+      integer,         dimension(:),   allocatable :: mht
+      integer,         dimension(:),   allocatable :: maxa
+      real (kind=dbl), dimension(:),   allocatable :: x
+      real (kind=dbl), dimension(:),   allocatable :: y
+      real (kind=dbl), dimension(:),   allocatable :: z
+      real (kind=dbl), dimension(:),   allocatable ::r
+      real (kind=dbl), dimension(:),   allocatable ::k
+      real (kind=dbl), dimension(:),   allocatable ::u
   !!!!!!!!!!!!!!!!!!!! Dynamically allocated variables !!!!!!!!!!!!!!!!!!!
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
@@ -39,7 +36,7 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
   ! .   speed storage available for execution, change the value of mtot .
   ! .   and correspondingly common a(mtot).                             .
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-        
+
   !
   !     the following scratch files are used
   !        ielmnt = unit storing element data
@@ -66,12 +63,12 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
     endif
   endif
   iout = 6
-  
+
   ielmnt = 1
   iload = 2
-  open(ielmnt, file = 'elementData.dat', status = 'unknown', form='unformatted') 
-  open(iload,  file = 'loadData2.dat'  , status = 'unknown', form='unformatted') 
-  
+  open(ielmnt, file = 'elementData.dat', status = 'unknown', form='unformatted')
+  open(iload,  file = 'loadData2.dat'  , status = 'unknown', form='unformatted')
+
 
   do  ! while
     !     * * * * * * * * * * * * * * * * * * * * * *
@@ -93,7 +90,7 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
     allocate ( y(numnp) )
     allocate ( z(numnp) )
     !!!!!!!!!!!!!!!!!!!! Dynamically allocating variables !!!!!!!!!!!!!!!!!!!
-    
+
     !     r e a d   n o d a l   p o i n t   d a t a
 
     call input (id,x,y,z,numnp,neq)
@@ -118,7 +115,7 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
     enddo
 
     !!!!!!!!!!!!!!! Deallocate dnamically allocated variables !!!!!!!!!!!!!!
-    deallocate (r)  
+    deallocate (r)
     !!!!!!!!!!!!!!! Deallocate dnamically allocated variables !!!!!!!!!!!!!!
 
     !     r e a d , g e n e r a t e   a n d   s t o r e
@@ -134,9 +131,9 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
 
     call elcal(mht,npar, id,x,y,z, numeg)
     !!!!!!!!!!!!!!! Deallocate dnamically allocated variables !!!!!!!!!!!!!!
-    deallocate (x)  
-    deallocate (y)  
-    deallocate (z)  
+    deallocate (x)
+    deallocate (y)
+    deallocate (z)
     !!!!!!!!!!!!!!! Deallocate dnamically allocated variables !!!!!!!!!!!!!!
 
 
@@ -147,14 +144,14 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
 
     !  a s s e m b l e   s t i f f n e s s   m a t r i x
     allocate ( maxa(neq+1) )
-    
+
     call addres (maxa,mht, neq,nwk, mk)
     !!!!!!!!!!!!!!! Deallocate dnamically allocated variables !!!!!!!!!!!!!!
-    deallocate (mht)  
+    deallocate (mht)
     !!!!!!!!!!!!!!! Deallocate dnamically allocated variables !!!!!!!!!!!!!!
 
     mm=nwk/neq
-    
+
     allocate ( k(nwk) )
     allocate ( u(neq) )
 
@@ -170,8 +167,8 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
       call clear (k,nwk)
       call clear (u,neq)
 
-      call assem (k, maxa, numeg, npar) 
-      
+      call assem (k, maxa, numeg, npar)
+
       call getSeconds (tim(3))
       ! t r i a n g u l a r i z e   s t i f f n e s s   m a t r i x
       ktr=1
@@ -185,7 +182,7 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
         call colsol (k,u,maxa,neq,ktr)
         write (iout,"(//,' load case ',i3)") l
         call writed (u,id,numnp)
-        
+
         !   c a l c u l a t i o n   o f   s t r e s s e s
         call stress ( u, numeg, npar ) !   <<<<<<<<====================
       enddo
@@ -204,13 +201,13 @@ Use, intrinsic :: iso_fortran_env, Only : iostat_end
     write (iout,2030) hed,(tim(i),i=1,4),tt
     ! read next analysis case
     !!!!!!!!!!!!!!! Deallocate dnamically allocated variables !!!!!!!!!!!!!!
-    deallocate (u)  
-    deallocate (k)  
-    deallocate (maxa)  
-    deallocate (id)  
+    deallocate (u)
+    deallocate (k)
+    deallocate (maxa)
+    deallocate (id)
     !!!!!!!!!!!!!!! Deallocate dnamically allocated variables !!!!!!!!!!!!!!
   enddo ! while
   close(ielmnt)
   close(iload)
   close(iin)
-end
+end ! end of stap Program !

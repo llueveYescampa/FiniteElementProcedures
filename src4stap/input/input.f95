@@ -1,7 +1,7 @@
 subroutine input (id,x,y,z,numnp,neq)
-  implicit none
-  double precision :: x(*),y(*),z(*)
-  integer :: id(3,*),numnp,neq
+include 'common.h'
+  real (kind=dbl) :: x(*),y(*),z(*)
+  integer         :: id(3,*),numnp,neq
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -24,11 +24,11 @@ subroutine input (id,x,y,z,numnp,neq)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   include 'tapes.h'
 
-  double precision :: dx,dy,dz,xnum
+  real (kind=dbl) :: dx,dy,dz,xnum
   integer :: j,k,kk,kn,i,knold,n,nold,num,numn
 
   include 'format4Input.h'
-  
+
   ! read and generate nodal point data
   write (iout,"(//,' n o d a l   p o i n t   d a t a',/)")
   write (iout,"(' input nodal data',//)")

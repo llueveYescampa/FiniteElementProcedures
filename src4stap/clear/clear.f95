@@ -1,7 +1,7 @@
 subroutine clear (a,n)
-  implicit none
-  double precision :: a(*)
-  integer :: n
+include 'common.h'
+  real (kind=dbl) :: a(*)
+  integer         :: n
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -10,7 +10,6 @@ subroutine clear (a,n)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
   a(1:n) = 0.0d0
-  
+
   return
 end
-

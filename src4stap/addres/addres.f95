@@ -1,5 +1,5 @@
 subroutine addres (maxa,mht, neq,nwk, mk)
-  implicit none
+include 'common.h'
   integer :: maxa(*),mht(*),neq, nwk, mk
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .

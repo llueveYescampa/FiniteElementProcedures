@@ -1,7 +1,7 @@
 subroutine colsol (a,v,maxa,nn,kkk)
-  implicit none
-  double precision :: a(*), v(*)
-  integer :: maxa(*), nn,kkk
+include 'common.h'
+  real (kind=dbl) :: a(*), v(*)
+  integer         :: maxa(*), nn,kkk
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -29,11 +29,11 @@ subroutine colsol (a,v,maxa,nn,kkk)
 
   include 'tapes.h'
 
-  integer :: ic,j,k,kh,ki,kk,kl,klt,kn,ku,l,n,nd
-  double precision :: b,c
+  integer         :: ic,j,k,kh,ki,kk,kl,klt,kn,ku,l,n,nd
+  real (kind=dbl) :: b,c
 
   include 'format4Colsol.h'
-  
+
   !     perform l*d*l(t) factorization of stiffness matrix
 
   if ( (kkk-2) < 0) then ! 40,150,150
@@ -52,7 +52,7 @@ subroutine colsol (a,v,maxa,nn,kkk)
           klt=klt - 1
           ki=maxa(k)
           nd=maxa(k+1) - ki - 1
-          if (nd > 0) then 
+          if (nd > 0) then
             kk=min0(ic,nd)
             c=0.
             do l=1,kk
@@ -76,13 +76,13 @@ subroutine colsol (a,v,maxa,nn,kkk)
         enddo
         a(kn)=a(kn) - b
       endif
-      
+
       if (a(kn) <=  0) then ! 120,120,140
         write (iout,2000) n,a(kn)
         stop
-      endif  
+      endif
     enddo
-  else 
+  else
 
   !     reduce right-hand-side load vector
     do n=1,nn
@@ -97,12 +97,12 @@ subroutine colsol (a,v,maxa,nn,kkk)
         enddo
         v(n)=v(n) - c
       endif
-    enddo  
+    enddo
   !     back-substitute
     do n=1,nn
       k=maxa(n)
       v(n)=v(n)/a(k)
-    enddo 
+    enddo
     if (nn /= 1) then ! go to 900
       n=nn
       do l=2,nn
@@ -113,12 +113,11 @@ subroutine colsol (a,v,maxa,nn,kkk)
           do  kk=kl,ku
             k=k - 1
             v(k)=v(k) - a(kk)*v(n)
-          enddo 
-       endif   
+          enddo
+       endif
         n=n - 1
       enddo
-    endif  
-  endif  
+    endif
+  endif
   return
 end
-

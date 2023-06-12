@@ -1,6 +1,6 @@
 subroutine addban (a,maxa,s,lm,nd)
-  implicit none
-  double precision :: a(*),s(*)
+include 'common.h'
+  real (kind=dbl) :: a(*),s(*)
   integer :: maxa(*),lm(*), nd
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .

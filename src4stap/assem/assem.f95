@@ -1,7 +1,7 @@
 subroutine assem (k, maxa, numeg, npar )
-  implicit none
-  double precision :: k(*)
-  integer :: maxa(*), numeg, npar(*)
+include 'common.h'
+  real (kind=dbl) :: k(*)
+  integer         :: maxa(*), numeg, npar(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -13,7 +13,7 @@ subroutine assem (k, maxa, numeg, npar )
 
   integer :: n, numest
   integer, dimension(:), allocatable :: temp
-   
+
   rewind ielmnt
   do n=1,numeg
     read (ielmnt) numest
@@ -24,6 +24,6 @@ subroutine assem (k, maxa, numeg, npar )
     call elemntAssem(temp, maxa, k, npar)
     deallocate (temp)
   enddo
-  
+
   return
 end

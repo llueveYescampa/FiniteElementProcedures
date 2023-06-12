@@ -1,7 +1,7 @@
 subroutine loads (r,id,nload,neq, modex)
-  implicit none
-  integer neq,nload, id(3,*), modex
-  double precision r(neq)
+include 'common.h'
+  integer         :: neq,nload, id(3,*), modex
+  real (kind=dbl) :: r(neq)
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -15,9 +15,9 @@ subroutine loads (r,id,nload,neq, modex)
   include 'tapes.h'
 
   integer :: i,ii,l,li,ln
-  double precision, dimension(:), allocatable ::fload
-  integer, dimension(:), allocatable :: nod
-  integer, dimension(:), allocatable :: idirn
+  real (kind=dbl), dimension(:), allocatable ::fload
+  integer, dimension(:),         allocatable :: nod
+  integer, dimension(:),         allocatable :: idirn
 
   allocate ( nod(nload) )
   allocate ( idirn(nload) )
@@ -42,8 +42,8 @@ subroutine loads (r,id,nload,neq, modex)
     write (iload) r
   endif
 
-  deallocate (nod)  
-  deallocate (idirn)  
-  deallocate (fload)  
+  deallocate (nod)
+  deallocate (idirn)
+  deallocate (fload)
   return
 end

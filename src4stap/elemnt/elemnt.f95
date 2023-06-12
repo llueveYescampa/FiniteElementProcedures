@@ -1,8 +1,8 @@
 subroutine elemnt(mht, id,x,y,z, npar)
-  implicit none
-  integer :: id(3,*), mht(*), npar(*)
-  double precision :: x(*),y(*),z(*)
-  
+include 'common.h'
+  integer         :: id(3,*), mht(*), npar(*)
+  real (kind=dbl) :: x(*),y(*),z(*)
+
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -16,7 +16,7 @@ subroutine elemnt(mht, id,x,y,z, npar)
  !     other element types would be called here, identifying each
  !     element type by a different npar(1) parameter
  !case(2)
- !case(3) 
+ !case(3)
   end select elementSelection
   return
 end

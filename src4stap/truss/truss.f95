@@ -1,7 +1,7 @@
 subroutine truss(mht, id,x,y,z, npar)
-  implicit none
-  integer :: id(3,*), mht(*), npar(*)
-  double precision :: x(*),y(*),z(*)
+include 'common.h'
+  integer         :: id(3,*), mht(*), npar(*)
+  real (kind=dbl) :: x(*),y(*),z(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -12,10 +12,10 @@ subroutine truss(mht, id,x,y,z, npar)
   include 'tapes.h'
   integer :: numIntegers
 
-  double precision, dimension(:), allocatable :: e
-  double precision, dimension(:), allocatable :: area
+  real (kind=dbl), dimension(:), allocatable :: e
+  real (kind=dbl), dimension(:), allocatable :: area
+  real (kind=dbl), dimension(:,:), allocatable :: xyz
   integer, dimension(:,:), allocatable :: lm
-  double precision, dimension(:,:), allocatable :: xyz
   integer, dimension(:), allocatable :: matp
   include 'itwo.h'
 
@@ -28,15 +28,15 @@ subroutine truss(mht, id,x,y,z, npar)
 
   !                  e()         area()          lm           xyz            matp
   numIntegers = npar(3)*itwo + npar(3)*itwo +  6*npar(2) + 6*npar(2)*itwo + npar(2)
-  
+
   call russ1 (mht,id,x,y,z,e, area, lm, xyz, matp, npar)
-  write (ielmnt) numIntegers,npar(1:10), e(1:npar(3)), area(1:npar(3)), lm(1:6, 1:npar(2)), xyz(1:6, 1:npar(2)), matp(1:npar(2)) 
-  
-  deallocate (matp)  
-  deallocate (xyz)  
-  deallocate (lm)  
-  deallocate (area)  
-  deallocate (e)  
+  write (ielmnt) numIntegers,npar(1:10), e(1:npar(3)), area(1:npar(3)), lm(1:6, 1:npar(2)), xyz(1:6, 1:npar(2)), matp(1:npar(2))
+
+  deallocate (matp)
+  deallocate (xyz)
+  deallocate (lm)
+  deallocate (area)
+  deallocate (e)
 
   return
 end

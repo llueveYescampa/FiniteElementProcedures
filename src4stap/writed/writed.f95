@@ -1,7 +1,7 @@
 subroutine writed (disp,id,numnp)
-  implicit none
-  integer :: id(3,*), numnp
-  double precision :: disp(*)
+include 'common.h'
+  integer         :: id(3,*), numnp
+  real (kind=dbl) :: disp(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -9,9 +9,9 @@ subroutine writed (disp,id,numnp)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
   include 'tapes.h'
-  
-  double precision :: d(3)
-  integer :: i,ii,ic,il,kk
+
+  real (kind=dbl) :: d(3)
+  integer         :: i,ii,ic,il,kk
 
   ! print displacements
 
@@ -39,4 +39,3 @@ subroutine writed (disp,id,numnp)
   enddo
   return
 end
-

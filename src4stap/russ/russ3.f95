@@ -1,7 +1,7 @@
 subroutine russ3 (e,area,lm,xyz,matp, u, ng, npar)
-  implicit none
-  double precision :: e(*),area(*),xyz(6,*),u(*)
-  integer :: lm(6,*) ,matp(*), ng, npar(*)
+include 'common.h'
+  real (kind=dbl) :: e(*),area(*),xyz(6,*),u(*)
+  integer         :: lm(6,*) ,matp(*), ng, npar(*)
 ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 ! .                                                                   .
 ! .              s t r e s s  c a l c u l a t i o n s                 .
@@ -9,10 +9,10 @@ subroutine russ3 (e,area,lm,xyz,matp, u, ng, npar)
 ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   include 'tapes.h'
 
-  integer :: i,iprint,j,l,mtype,n,nd
-  double precision :: st(6),d(3), p,str,xl2
+  integer         :: i,iprint,j,l,mtype,n,nd
+  real (kind=dbl) :: st(6),d(3), p,str,xl2
 
-  include 'format4Russ3.h'  
+  include 'format4Russ3.h'
   nd=6
 
   iprint=0

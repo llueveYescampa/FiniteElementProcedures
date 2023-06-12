@@ -1,7 +1,7 @@
 subroutine stress (u, numeg, npar)
-  implicit none
-  integer          :: numeg, npar(*)
-  double precision :: u(*)
+include 'common.h'
+  integer         :: numeg, npar(*)
+  real (kind=dbl) :: u(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -11,10 +11,10 @@ subroutine stress (u, numeg, npar)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
   include 'tapes.h'
-  
+
 !     loop over all element groups
 
-  integer :: ng, numest
+  integer                            :: ng, numest
   integer, dimension(:), allocatable :: temp
 
   rewind ielmnt
@@ -26,6 +26,6 @@ subroutine stress (u, numeg, npar)
     call elemntStress(temp, u, ng, npar)
     deallocate (temp)
   enddo
-  
+
   return
 end

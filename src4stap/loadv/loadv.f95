@@ -1,7 +1,7 @@
 subroutine loadv (r,neq)
-  implicit none
-  double precision :: r(neq)
-  integer :: neq
+include 'common.h'
+  real (kind=dbl) :: r(neq)
+  integer         :: neq
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -10,8 +10,7 @@ subroutine loadv (r,neq)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
   include 'tapes.h'
-  
+
   read (iload) r
   return
 end
-

@@ -1,7 +1,7 @@
 subroutine elcal(mht, npar, id,x,y,z, numeg )
-  implicit none
-  integer          :: mht(*), id(3,*), numeg, npar(*)
-  double precision :: x(*),y(*),z(*)
+include 'common.h'
+  integer         :: mht(*), id(3,*), numeg, npar(*)
+  real (kind=dbl) :: x(*),y(*),z(*)
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
