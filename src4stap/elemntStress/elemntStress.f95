@@ -1,6 +1,6 @@
-subroutine elemntStress(temp, u, ng, npar)
+subroutine elemntStress(itemp, u, ng, npar)
 include 'common.h'
-  integer, intent(in)         ::  temp(*), ng, npar(*)
+  integer, intent(in)         ::  itemp(*), ng, npar(*)
   real (kind=dbl), intent(in) :: u(*)
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
@@ -12,7 +12,7 @@ include 'common.h'
 
   elementSelection: select case (npar(1))
   case (1)
-    call trussStress(temp,u, ng , npar)
+    call trussStress(itemp,u, ng , npar)
  !     other element types would be called here, identifying each
  !     element type by a different npar(1) parameter
  !case(2)

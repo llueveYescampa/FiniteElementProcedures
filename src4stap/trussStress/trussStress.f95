@@ -1,6 +1,6 @@
-subroutine trussStress(temp, u, ng, npar)
+subroutine trussStress(itemp, u, ng, npar)
 include 'common.h'
-  integer, intent(in) :: temp(*), ng, npar(*)
+  integer, intent(in) :: itemp(*), ng, npar(*)
   real (kind=dbl), intent(in) :: u(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -18,7 +18,7 @@ include 'common.h'
   n105=n104  + 6*npar(2)*itwo         ! xyz
   nlast=n105 + npar(2)                ! matp
 
-  call russ3 (temp(1),temp(n102),temp(n103),temp(n104),temp(n105), u, ng, npar)
+  call russ3 (itemp(1),itemp(n102),itemp(n103),itemp(n104),itemp(n105), u, ng, npar)
 
   return
 end ! end of subroutine trussStress() !

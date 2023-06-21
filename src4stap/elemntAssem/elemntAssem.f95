@@ -1,6 +1,6 @@
-subroutine elemntAssem(temp, maxa, rk, npar)
+subroutine elemntAssem(itemp, maxa, rk, npar)
 include 'common.h'
-  integer, intent(in) :: temp(*), maxa(*), npar(*)
+  integer, intent(in) :: itemp(*), maxa(*), npar(*)
   real (kind=dbl), intent(in) :: rk(*)
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
@@ -12,7 +12,7 @@ include 'common.h'
 
   elementSelection: select case (npar(1))
   case (1)
-    call trussAssem(temp,maxa, rk, npar)
+    call trussAssem(itemp,maxa, rk, npar)
  !     other element types would be called here, identifying each
  !     element type by a different npar(1) parameter
  !case(2)

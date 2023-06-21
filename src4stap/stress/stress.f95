@@ -16,16 +16,16 @@ include 'common.h'
 !     loop over all element groups
 
   integer                            :: ng, numest
-  integer, dimension(:), allocatable :: temp
+  integer, dimension(:), allocatable :: itemp
 
   rewind ielmnt
   do ng=1,numeg
     read (ielmnt) numest
-    allocate ( temp(numest) )
+    allocate ( itemp(numest) )
     backspace(ielmnt)
-    read (ielmnt) numest, npar(1:10), temp(1:numest)
-    call elemntStress(temp, u, ng, npar)
-    deallocate (temp)
+    read (ielmnt) numest, npar(1:10), itemp(1:numest)
+    call elemntStress(itemp, u, ng, npar)
+    deallocate (itemp)
   enddo
 
   return

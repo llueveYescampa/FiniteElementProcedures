@@ -1,6 +1,6 @@
-subroutine trussAssem(temp, maxa, rk, npar)
+subroutine trussAssem(itemp, maxa, rk, npar)
 include 'common.h'
-  integer, intent(in)         :: temp(*), maxa(*), npar(*)
+  integer, intent(in)         :: itemp(*), maxa(*), npar(*)
   real (kind=dbl), intent(in) :: rk(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -18,7 +18,7 @@ include 'common.h'
   n105=n104  + 6*npar(2)*itwo         ! xyz
   nlast=n105 + npar(2)                ! matp
 
-  call russ2 (temp(1),temp(n102),temp(n103),temp(n104),temp(n105), maxa, rk, npar)
+  call russ2 (itemp(1),itemp(n102),itemp(n103),itemp(n104),itemp(n105), maxa, rk, npar)
 
   return
 end ! end of subroutine trussAssem() !

@@ -1,7 +1,7 @@
 subroutine russ3 (e,area,lm,xyz,matp, u, ng, npar)
 include 'common.h'
   real (kind=dbl), intent(in) :: e(*),area(*),xyz(6,*),u(*)
-  integer, intent(in)         :: lm(6,*) ,matp(*), ng, npar(*)
+  integer, intent(in)         :: lm(6,*),matp(*),ng,npar(*)
 ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 ! .                                                                   .
 ! .              s t r e s s  c a l c u l a t i o n s                 .
