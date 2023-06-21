@@ -1,7 +1,7 @@
 subroutine colsol (a,v,maxa,nn,kkk)
 include 'common.h'
-  real (kind=dbl) :: a(*), v(*)
-  integer         :: maxa(*), nn,kkk
+  real (kind=dbl), intent(inout) :: a(*),v(*)
+  integer, intent(in)            :: maxa(*), nn,kkk
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -120,4 +120,4 @@ include 'common.h'
     endif
   endif
   return
-end
+end ! end of subroutine colsol() !

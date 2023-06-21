@@ -1,7 +1,7 @@
 subroutine trussStress(temp, u, ng, npar)
 include 'common.h'
-  integer :: temp(*), ng, npar(*)
-  real (kind=dbl) :: u(*)
+  integer, intent(in) :: temp(*), ng, npar(*)
+  real (kind=dbl), intent(in) :: u(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -21,4 +21,4 @@ include 'common.h'
   call russ3 (temp(1),temp(n102),temp(n103),temp(n104),temp(n105), u, ng, npar)
 
   return
-end
+end ! end of subroutine trussStress() !

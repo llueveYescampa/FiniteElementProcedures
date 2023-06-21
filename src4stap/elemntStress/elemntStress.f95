@@ -1,7 +1,7 @@
 subroutine elemntStress(temp, u, ng, npar)
 include 'common.h'
-  integer ::  temp(*), ng, npar(*)
-  real (kind=dbl) :: u(*)
+  integer, intent(in)         ::  temp(*), ng, npar(*)
+  real (kind=dbl), intent(in) :: u(*)
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -19,4 +19,4 @@ include 'common.h'
  !case(3)
   end select elementSelection
   return
-end
+end ! end of subroutine elemntStress() !

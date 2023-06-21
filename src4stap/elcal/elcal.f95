@@ -1,7 +1,8 @@
 subroutine elcal(mht, npar, id,x,y,z, numeg )
 include 'common.h'
-  integer         :: mht(*), id(3,*), numeg, npar(*)
-  real (kind=dbl) :: x(*),y(*),z(*)
+  integer, intent(in)         :: mht(*), id(3,*), numeg
+  integer, intent(inout)      :: npar(*)
+  real (kind=dbl), intent(in) :: x(*),y(*),z(*)
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -26,4 +27,4 @@ include 'common.h'
     call elemnt(mht, id,x,y,z, npar)
   enddo
   return
-end
+end ! end of subroutine elcal() !

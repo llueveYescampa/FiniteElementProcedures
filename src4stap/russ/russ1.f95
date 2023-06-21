@@ -1,7 +1,9 @@
 subroutine russ1 (mht,id,x,y,z,e,area,lm,xyz,matp, npar)
 include 'common.h'
-  real (kind=dbl) ::  x(*),y(*),z(*),e(*),area(*),xyz(6,*)
-  integer         :: id(3,*),lm(6,*),mht(*) ,matp(*), npar(*)
+  real (kind=dbl), intent(in)    :: x(*),y(*),z(*)
+  real (kind=dbl), intent(inout) :: e(*),xyz(6,*),area(*)
+  integer, intent(in)            :: id(3,*),mht(*)
+  integer, intent(inout)         :: lm(6,*), npar(*),matp(*)
   ! . . .. . . . . . . . . . . . . . . . . . . . .
   ! .                                            .
   ! .    read and generate element information   .
@@ -75,4 +77,4 @@ include 'common.h'
     endif
   enddo
   return
-end
+end ! end of subroutine russ1() !

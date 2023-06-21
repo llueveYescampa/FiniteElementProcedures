@@ -1,7 +1,7 @@
 subroutine loadv (r,neq)
 include 'common.h'
-  real (kind=dbl) :: r(neq)
-  integer         :: neq
+  real (kind=dbl), intent(inout) :: r(neq)
+  integer, intent(in)            :: neq
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -13,4 +13,4 @@ include 'common.h'
 
   read (iload) r
   return
-end
+end ! end of subroutine loadv() !

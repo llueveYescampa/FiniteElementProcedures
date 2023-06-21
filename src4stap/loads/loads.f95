@@ -1,7 +1,7 @@
 subroutine loads (r,id,nload,neq, modex)
 include 'common.h'
-  integer         :: neq,nload, id(3,*), modex
-  real (kind=dbl) :: r(neq)
+  integer, intent(in)            :: neq,nload, id(3,*), modex
+  real (kind=dbl), intent(inout) :: r(neq)
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -46,4 +46,4 @@ include 'common.h'
   deallocate (idirn)
   deallocate (fload)
   return
-end
+end ! end of subroutine loads() !

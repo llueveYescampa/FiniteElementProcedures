@@ -1,7 +1,7 @@
 subroutine clear (a,n)
 include 'common.h'
-  real (kind=dbl) :: a(*)
-  integer         :: n
+  real (kind=dbl), intent(inout) :: a(*)
+  integer, intent(in)            :: n
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -12,4 +12,4 @@ include 'common.h'
   a(1:n) = 0.0d0
 
   return
-end
+end ! end of subroutine clear() !

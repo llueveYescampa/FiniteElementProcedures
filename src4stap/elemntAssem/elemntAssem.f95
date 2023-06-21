@@ -1,7 +1,7 @@
 subroutine elemntAssem(temp, maxa, rk, npar)
 include 'common.h'
-  integer :: temp(*), maxa(*), npar(*)
-  real (kind=dbl) :: rk(*)
+  integer, intent(in) :: temp(*), maxa(*), npar(*)
+  real (kind=dbl), intent(in) :: rk(*)
 
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
@@ -19,4 +19,4 @@ include 'common.h'
  !case(3)
   end select elementSelection
   return
-end
+end ! end of subroutine elemntAssem() !

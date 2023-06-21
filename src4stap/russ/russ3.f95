@@ -1,7 +1,7 @@
 subroutine russ3 (e,area,lm,xyz,matp, u, ng, npar)
 include 'common.h'
-  real (kind=dbl) :: e(*),area(*),xyz(6,*),u(*)
-  integer         :: lm(6,*) ,matp(*), ng, npar(*)
+  real (kind=dbl), intent(in) :: e(*),area(*),xyz(6,*),u(*)
+  integer, intent(in)         :: lm(6,*) ,matp(*), ng, npar(*)
 ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 ! .                                                                   .
 ! .              s t r e s s  c a l c u l a t i o n s                 .
@@ -41,4 +41,4 @@ include 'common.h'
     write (iout,"(1x,i5,11x,e13.6,4x,e13.6)") n,p,str
   enddo
   return
-end
+end ! end of subroutine russ3() !

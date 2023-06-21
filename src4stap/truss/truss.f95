@@ -1,7 +1,7 @@
 subroutine truss(mht, id,x,y,z, npar)
 include 'common.h'
-  integer         :: id(3,*), mht(*), npar(*)
-  real (kind=dbl) :: x(*),y(*),z(*)
+  integer, intent(in)         :: id(3,*), mht(*), npar(*)
+  real (kind=dbl), intent(in) :: x(*),y(*),z(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -39,4 +39,4 @@ include 'common.h'
   deallocate (e)
 
   return
-end
+end ! end of subroutine truss() !

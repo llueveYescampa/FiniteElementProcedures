@@ -1,7 +1,8 @@
 subroutine input (id,x,y,z,numnp,neq)
 include 'common.h'
-  real (kind=dbl) :: x(*),y(*),z(*)
-  integer         :: id(3,*),numnp,neq
+  real (kind=dbl), intent(inout) :: x(*),y(*),z(*)
+  integer, intent(in)            :: numnp
+  integer, intent(inout)         :: id(3,*),neq
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -85,4 +86,4 @@ include 'common.h'
   ! write equation numbers
   write (iout,2040) (n,id(1:3,n),n=1,numnp)
   return
-end
+end ! end of subroutine input() !

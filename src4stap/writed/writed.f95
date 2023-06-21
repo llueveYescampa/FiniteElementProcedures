@@ -1,7 +1,7 @@
 subroutine writed (disp,id,numnp)
 include 'common.h'
-  integer         :: id(3,*), numnp
-  real (kind=dbl) :: disp(*)
+  integer, intent(in)         :: id(3,*), numnp
+  real (kind=dbl), intent(in) :: disp(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -38,4 +38,4 @@ include 'common.h'
     write (iout,'(1x,i3,8x,3e18.6)') ii,d
   enddo
   return
-end
+end ! end of subroutine writed() !

@@ -1,7 +1,8 @@
 subroutine assem (k, maxa, numeg, npar )
 include 'common.h'
-  real (kind=dbl) :: k(*)
-  integer         :: maxa(*), numeg, npar(*)
+  real (kind=dbl), intent(in) :: k(*)
+  integer, intent(in)         :: maxa(*), numeg
+  integer, intent(inout)      :: npar(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -26,4 +27,4 @@ include 'common.h'
   enddo
 
   return
-end
+end ! end of subroutine assem() !

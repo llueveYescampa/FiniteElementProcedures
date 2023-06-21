@@ -1,7 +1,8 @@
 subroutine stress (u, numeg, npar)
 include 'common.h'
-  integer         :: numeg, npar(*)
-  real (kind=dbl) :: u(*)
+  integer, intent(in)         :: numeg
+  integer, intent(inout)      :: npar(*)
+  real (kind=dbl), intent(in) :: u(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -28,4 +29,4 @@ include 'common.h'
   enddo
 
   return
-end
+end ! end of subroutine stress() !

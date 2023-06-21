@@ -1,6 +1,7 @@
 subroutine addres (maxa,mht, neq,nwk, mk)
 include 'common.h'
-  integer :: maxa(*),mht(*),neq, nwk, mk
+  integer, intent(in)    :: mht(*),neq
+  integer, intent(inout) :: maxa(*), mk, nwk
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -32,4 +33,4 @@ include 'common.h'
   mk = mk + 1
   nwk=maxa(neqp1) - maxa(1)
   return
-end
+end ! end of subroutine addres() !

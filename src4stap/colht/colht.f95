@@ -1,7 +1,8 @@
 subroutine colht (mht,nd,lm)
 use iso_fortran_env
 include 'common.h'
-  integer :: mht(*), nd, lm(*)
+  integer, intent(in)    :: nd, lm(*)
+  integer, intent(inout) :: mht(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -30,4 +31,4 @@ include 'common.h'
   enddo
 
   return
-end
+end ! end of subroutine colht() !

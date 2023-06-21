@@ -1,7 +1,7 @@
 subroutine trussAssem(temp, maxa, rk, npar)
 include 'common.h'
-  integer         :: temp(*), maxa(*), npar(*)
-  real (kind=dbl) :: rk(*)
+  integer, intent(in)         :: temp(*), maxa(*), npar(*)
+  real (kind=dbl), intent(in) :: rk(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -21,4 +21,4 @@ include 'common.h'
   call russ2 (temp(1),temp(n102),temp(n103),temp(n104),temp(n105), maxa, rk, npar)
 
   return
-end
+end ! end of subroutine trussAssem() !

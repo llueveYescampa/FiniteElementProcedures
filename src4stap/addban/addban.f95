@@ -1,7 +1,8 @@
 subroutine addban (a,maxa,s,lm,nd)
 include 'common.h'
-  real (kind=dbl) :: a(*),s(*)
-  integer :: maxa(*),lm(*), nd
+  real (kind=dbl), intent(in)    :: s(*)
+  real (kind=dbl), intent(inout) :: a(*)
+  integer, intent(in)            :: maxa(*),lm(*), nd
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                   .
   ! .   p r o g r a m                                                   .
@@ -51,4 +52,4 @@ include 'common.h'
     ndi=ndi + nd - i
   enddo
   return
-end
+end ! end of subroutine addban() !

@@ -1,7 +1,7 @@
 subroutine russ2 (e,area,lm,xyz,matp, maxa, rkk, npar)
 include 'common.h'
-  real (kind=dbl) :: e(*),area(*),xyz(6,*), rkk(*)
-  integer         :: lm(6,*) ,matp(*), maxa(*), npar(*)
+  real (kind=dbl), intent(in) :: e(*),area(*),xyz(6,*), rkk(*)
+  integer, intent(in)         :: lm(6,*) ,matp(*), maxa(*), npar(*)
   ! . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   ! .                                                                           .
   ! .      a s s e m b l e  s t u c t u r e  s t i f f n e s s  m a t r i x     .
@@ -37,4 +37,4 @@ include 'common.h'
     call addban (rkk,maxa,s,lm(1,n),nd)
   enddo
   return
-end
+end ! end of subroutine russ2() !
