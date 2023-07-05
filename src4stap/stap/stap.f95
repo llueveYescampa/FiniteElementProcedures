@@ -16,7 +16,7 @@ include 'common.h'
       integer :: ioerr
       integer :: i,ktr,l,ll,mm,neq1,nlcase,nload,nnl, modex
       integer ::  numnp,neq,nwk,mk, numeg, npar(10)
-      real (kind=sgl) :: tim(5), hed(20), tt
+      real (kind=sgl) :: tim(5), hed(20), tt, getSeconds
 
   !!!!!!!!!!!!!!!!!!!! Dynamically allocated variables !!!!!!!!!!!!!!!!!!!
       integer,         dimension(:,:), allocatable :: id
@@ -74,7 +74,7 @@ include 'common.h'
     !     * * * * * * * * * * * * * * * * * * * * * *
     !     * * *   i n p u t   p h a s e   * * *
     !     * * * * * * * * * * * * * * * * * * * * * *
-    call getSeconds (tim(1))
+    tim(1) = getSeconds()
 
 
     !     r e a d   c o n t r o l   i n f o r m a t i o n
@@ -137,7 +137,7 @@ include 'common.h'
     !!!!!!!!!!!!!!! Deallocate dnamically allocated variables !!!!!!!!!!!!!!
 
 
-    call getSeconds (tim(2))
+    tim(2) = getSeconds()
     ! * * * * * * * * * * * * * * * * * * * * * *
     ! * * *   s o l u t i o n   p h a s e   * * *
     ! * * * * * * * * * * * * * * * * * * * * * *
@@ -169,11 +169,11 @@ include 'common.h'
 
       call assem (k, maxa, numeg, npar)
 
-      call getSeconds (tim(3))
+      tim(3) = getSeconds()
       ! t r i a n g u l a r i z e   s t i f f n e s s   m a t r i x
       ktr=1
       call colsol (k,u,maxa,neq,ktr)
-      call getSeconds (tim(4))
+      tim(4) = getSeconds()
       ktr=2
       rewind iload
       do l=1,nlcase
@@ -186,11 +186,11 @@ include 'common.h'
         !   c a l c u l a t i o n   o f   s t r e s s e s
         call stress ( u, numeg, npar ) !   <<<<<<<<====================
       enddo
-      call getSeconds (tim(5))
+      tim(5) = getSeconds()
     else
-      call getSeconds (tim(3))
-      call getSeconds (tim(4))
-      call getSeconds (tim(5))
+      tim(3) = getSeconds()
+      tim(4) = getSeconds()
+      tim(5) = getSeconds()
     endif
     ! print solution times
     tt=0.
