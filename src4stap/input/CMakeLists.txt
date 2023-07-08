@@ -2,10 +2,10 @@
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 get_filename_component(CurrDir ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
-#Create a variable called linalg_SOURCES containing all .f95 files:
+#Create a variable called linalg_SOURCES containing all .f90 files:
 
 set(input_Src
-    ${myPROJECT_SOURCE_DIR}/${CurrDir}/input.f95
+    ${myPROJECT_SOURCE_DIR}/${CurrDir}/input.f90
     PARENT_SCOPE
     )
 
